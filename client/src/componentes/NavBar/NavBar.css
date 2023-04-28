@@ -1,0 +1,154 @@
+.LayoutNavbar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: black;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.divLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  height: 100px;
+}
+
+.Logo {
+  padding: 1%;
+  height: 70px;
+}
+
+.divconjuntos {
+  width: 90%;
+  height: 100px;
+}
+
+.divOne {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 60%;
+  padding-left: 25%;
+  padding-right: 6%;
+}
+.userButtondiv {
+  display: flex;
+}
+.searchBarDiv {
+  display: flex;
+  height: fit-content;
+}
+
+.userButtondiv {
+  display: block;
+  color: aliceblue;
+  transition: 1s;
+  cursor: pointer;
+}
+.userButtondiv:hover {
+  color: rgba(255, 38, 0, 0.479);
+}
+
+.divTwo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: black;
+  height: 30%;
+  padding-right: 5%;
+  padding-left: 5%;
+  /* 
+  height: 35px;
+  align-content: center;
+  align-items: center;
+  padding: 0px 10%;
+  
+  font-size: larger;
+   */
+}
+
+.navButton {
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  transition: 1s;
+  text-decoration-line: none;
+}
+.navButton a.active {
+  color: #61777f;
+}
+.navButton:hover {
+  color: rgba(255, 38, 0, 0.479);
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: flex;
+  margin-top: 0;
+  color: white;
+  background-color: black;
+  border-radius: var(--border-radius);
+  width: 200px;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+  transition: var(--speed) ease;
+  z-index: 1;
+}
+
+.dropdown-menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
+}
+
+/* .dropdown-menu::before{
+        position: absolute;
+        top: -5px;
+        right: 20px;
+        height: 20px;
+        width: 20px;
+        background: var(--secondary-bg);
+        transform: rotate(45deg);
+    }   */
+
+.dropdown-menu ul li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* .dropdown-menu:hover p{
+    color: rgb(212, 33, 9);
+    cursor: pointer;
+} */
+
+.dropdownItem {
+  display: flex;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.dropdownItem p {
+  max-width: 100px;
+  margin-left: 10px;
+  transition: var(--speed);
+}
+.nosotros {
+  color: white;
+  text-decoration: none;
+}
+
+.nosotros:hover {
+  color: rgba(255, 38, 0, 0.479);
+  transition: 1s;
+}
