@@ -12,9 +12,11 @@ const Formulario = () => {
   const [categoria, setCategoria] = useState("");
   const [sendForm, setSendForm] = useState(false);
   const [file, setFile] = useState(null);
+  const URL = "https://api-santiaguero91.vercel.app"
+
 
   const Handlercategory = async () => {
-    const categoria = await axios(`http://localhost:3001/categorias`);
+    const categoria = await axios(`${URL}/categorias`);
     setCategoria(categoria.data);
   };
 
