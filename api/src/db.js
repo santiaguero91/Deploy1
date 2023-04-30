@@ -1,5 +1,5 @@
 require("dotenv").config();
-import * as pg from 'pg';
+var pg = require('pg')
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
