@@ -5,7 +5,6 @@ const FORM_ID = 'payment-form'
 
 export default function Product ({items}) {
     const {id} = useParams()
-
     const obtenerPreferencias = useCallback(
         async() => {
             const res = await fetchCToken(`http://localhost:3001/mercadopago/payment/${id}`,{items}, 'POST')

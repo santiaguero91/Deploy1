@@ -1,4 +1,6 @@
 import axios from "axios";
+
+
 import {
   FILTER_BY_CATEGORY,
   GET_CATEGORIES,
@@ -13,13 +15,19 @@ import {
   GET_REVIEWS,
   FILTER_REVIEWS,
   POST_REVIEW,
-  DELETE_ITEM_CARRITO,
+  PUT_ADMIN_USER,
+  GET_USER_BY_ID,
+  DELETE_ITEM_CARRITO
 } from "./action-types";
+import * as dotenv from 'dotenv'
+dotenv.config()
+const {URL} = process.env;
+/* const URL = "https://api-santiaguero91.vercel.app" */
 
 export function getProducts() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/productos");
+      let json = await axios.get(`${URL}/productos`);
       return dispatch({
         type: GET_PRODUCTS,
         payload: json.data,
@@ -33,7 +41,7 @@ export function getProducts() {
 export function getProductById(id) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(`http://localhost:3001/productos/${id}`);
+      const json = await axios.get(`${URL}/productos/${id}`);
       return dispatch({
         type: GET_PRODUCT_BY_ID,
         payload: json.data,
@@ -44,10 +52,24 @@ export function getProductById(id) {
   };
 }
 
+export function getUserById(id) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`${URL}/usuarios/${id}`);
+      return dispatch({
+        type: GET_USER_BY_ID,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
 export function getCategories() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/categorias");
+      let json = await axios.get(`${URL}/categorias`);
       return dispatch({
         type: GET_CATEGORIES,
         payload: json.data,
@@ -60,7 +82,7 @@ export function getCategories() {
 export function getReviews() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/reviews");
+      let json = await axios.get(`${URL}/reviews`);
       return dispatch({
         type: GET_REVIEWS,
         payload: json.data,
@@ -76,7 +98,7 @@ export const createProducts = (obj) => {
   return async function (dispatch) {
     try {
       let response = await axios.post(
-        "http://localhost:3001/productos/create",
+        `${URL}/productos/create`,
         obj
       );
       console.log(response);
@@ -120,7 +142,7 @@ export function getProductsbyName(name) {
   return async function (dispatch) {
     try {
       let json = await axios.get(
-        `http://localhost:3001/productos/?name=${name}`
+        `${URL}/productos/?name=${name}`
       );
       return dispatch({
         type: GET_PRODUCTS_BY_NAME,
@@ -135,7 +157,7 @@ export function getProductsbyName(name) {
 export function getUsers() {
   return async function (dispatch) {
     try {
-      let json = await axios.get("http://localhost:3001/usuarios");
+      let json = await axios.get(`${URL}/usuarios`);
       return dispatch({
         type: GET_USERS,
         payload: json.data,
@@ -151,7 +173,7 @@ export const createReview = (obj) => {
   return async function (dispatch) {
     try {
       let response = await axios.post(
-        "http://localhost:3001/reviews/create",
+        `${URL}/reviews/create`,
         obj
       );
       console.log(response);
@@ -170,7 +192,7 @@ export const createUsers = (obj) => {
   return async function (dispatch) {
     try {
       let response = await axios.post(
-        "http://localhost:3001/usuarios/create",
+        `${URL}/usuarios/create`,
         obj
       );
       console.log(response);
@@ -187,7 +209,7 @@ export const createUsers = (obj) => {
 export function deleteReview(id){
   return async function() {
       try{       
-      const response = await axios.delete("http://localhost:3001/reviews/"+id)
+      const response = await axios.delete(`${URL}/reviews/`+id)
       return response
   } catch (error){
       console.log(error);
@@ -200,3 +222,17 @@ export function deleteItemCarrito(items){
     payload: items,
   });
 } 
+export function putAdminUser(id,admin){
+  return async function(dispatch){
+    try {
+      const response = await axios.put(`${URL}/usuarios/`+ id, admin)
+      console.log(response)
+      return dispatch({
+        type: PUT_ADMIN_USER,
+        payload: response.data
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}

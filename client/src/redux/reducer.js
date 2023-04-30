@@ -10,7 +10,9 @@ import {
   GET_REVIEWS,
   ORDER_BY_NAME,
   ORDER_BY_PRICE,
-  POST_REVIEW,
+  GET_USERS,
+  GET_USER_BY_ID,
+  POST_REVIEW
 } from "./action-types";
 
 const initialState = {
@@ -23,6 +25,8 @@ const initialState = {
   detail: [],
   user: [],
   carrito: [],
+  users: [],
+  detailUser: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -44,10 +48,20 @@ const reducer = (state = initialState, action) => {
         reviews: action.payload,
         allReviews: action.payload,
       };
+    case GET_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
     case GET_PRODUCT_BY_ID:
       return {
         ...state,
         detail: action.payload,
+      };
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        detailUser: action.payload
       };
     case ORDER_BY_NAME:
       let sortedArr =

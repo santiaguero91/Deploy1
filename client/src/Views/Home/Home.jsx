@@ -13,6 +13,8 @@ import img3  from "../../componentes/Imagenes/image-3.jpg";
 import img4  from "../../componentes/Imagenes/image-4.jpg";
 import img5  from "../../componentes/Imagenes/image-5.jpg";
 
+
+
 const Home = () => {
   const dispatch = useDispatch();
 
