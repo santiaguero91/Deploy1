@@ -52,7 +52,7 @@ const Carrito = ({ popupActive, setPopupActive }) => {
   const headers = { "Content-Type": "text/plain" };
 
   
-  const json = await axios.post(`http://localhost:3001/mercadopago/create_preference`,items, headers)
+  const json = await axios.post(`https://api-mx1xp8s8p-santiaguero91.vercel.app/mercadopago/create_preference`,items, headers)
   window.location.assign(json.data) 
   return json; 
 };

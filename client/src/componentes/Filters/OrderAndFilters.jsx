@@ -40,29 +40,6 @@ name="Order" id="3" onClick={(e) => handleOrderByPrice(e)} value="3" >Precio: ma
 <button  
 className= {`${numberCheck=== String(4) ? "special" : ""}`}
 name="Order" id="4" onClick={(e) => handleOrderByPrice(e)} value="4" >Precio: menor a mayor</button>
-
-{/*       <select onChange={(e) => handleOrderByName(e)}>
-        <option>Order by Name</option>
-        <option value="asc">A-Z</option>
-        <option value="desc">Z-A</option>
-      </select> */}
-
-{/*       <select onChange={(e) => handleOrderByPrice(e)}>
-        <option>Order by Price</option>
-        <option value="asc">Increase price</option>
-        <option value="desc">Decrease price</option>
-      </select> */}
-
-      {/* <select onChange={e=> handleFilterCategories(e)}>
-
-        <option value="All">All Categories</option>
-        <option value="Mancuernas">Mancuernas</option>
-        <option value="Maquinas">Maquinas</option>
-        <option value="Accesorios">Accesorios</option>
-        <option value="Rack">Rack</option>
-        <option value="Discos y Barras">Discos y Barras</option>
-
-      </select> */}
     </FiltersStyled>
   );
 }

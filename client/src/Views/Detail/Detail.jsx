@@ -63,7 +63,7 @@ const Detail = () => {
   const buyClick = async () => {
     const json = await axios.get(
       `https://api-santiaguero91.vercel.app/mercadopago/payment/${id}`
-    );
+    ); /* https://api-mx1xp8s8p-santiaguero91.vercel.app */
     window.location.assign(json.data);
     return json;
   };
