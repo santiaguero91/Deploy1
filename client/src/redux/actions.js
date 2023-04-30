@@ -21,8 +21,9 @@ import {
 } from "./action-types";
 import * as dotenv from 'dotenv'
 dotenv.config()
-const {URL} = process.env;
-/* const URL = "https://api-santiaguero91.vercel.app" */
+/* const {URL} = process.env;
+ */
+ const URL = "https://api-santiaguero91.vercel.app"
 
 export function getProducts() {
   return async function (dispatch) {

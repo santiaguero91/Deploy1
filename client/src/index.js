@@ -10,15 +10,16 @@ import { Provider } from "react-redux";
 import { Auth0Provider } from "@auth0/auth0-react";
 import * as dotenv from 'dotenv'
 dotenv.config()
-const { DOMAIN, CLIENTID } = process.env
+/* const { DOMAIN, CLIENTID } = process.env*/
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
       <React.StrictMode>
         <Auth0Provider 
-          domain={CLIENTID}
-          clientId= {DOMAIN}
+          domain="dev-a26zs0z2za6hq3cq.us.auth0.com"
+          clientId="bIFzZHia1gmJSmx7WPlNON4QLSpzVLcY"
           redirectUri={ window.location.origin }>
           <App />
         </Auth0Provider>
