@@ -137,10 +137,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    case POST_REVIEW:
-      return {
-        ...state,
-      };
     case DELETE_REVIEW:
       return {
         ...state,

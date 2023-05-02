@@ -17,13 +17,14 @@ import {
   POST_REVIEW,
   PUT_ADMIN_USER,
   GET_USER_BY_ID,
-  DELETE_ITEM_CARRITO
+  DELETE_ITEM_CARRITO,
+  GET_ADMIN_PRODUCTS
 } from "./action-types";
 import * as dotenv from 'dotenv'
 dotenv.config()
 /* const {URL} = process.env;
  */
- const URL = "https://api-mx1xp8s8p-santiaguero91.vercel.app" 
+ const URL = "https://api-bqnphw8qs-santiaguero91.vercel.app" 
 
 export function getProducts() {
   return async function (dispatch) {
@@ -113,6 +114,24 @@ export const createProducts = (obj) => {
   };
 };
 
+export const createReview = (obj) => {
+  console.log(obj);
+  return async function (dispatch) {
+    try {
+      let response = await axios.post(
+        `${URL}/reviews/create`,
+        obj
+      );
+      console.log(response);
+      return dispatch({
+        type: POST_REVIEW,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 export function orderByName(payload) {
   return {
     type: ORDER_BY_NAME,
@@ -169,24 +188,7 @@ export function getUsers() {
   };
 }
 
-export const createReview = (obj) => {
-  console.log(obj);
-  return async function (dispatch) {
-    try {
-      let response = await axios.post(
-        `${URL}/reviews/create`,
-        obj
-      );
-      console.log(response);
-      return dispatch({
-        type: POST_REVIEW,
-        payload: response.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+
 
 export const createUsers = (obj) => {
   console.log(obj);
@@ -223,17 +225,31 @@ export function deleteItemCarrito(items){
     payload: items,
   });
 } 
-export function putAdminUser(id,admin){
-  return async function(dispatch){
+
+
+export function getAllProductsAdmin() {
+  return async function (dispatch) {
     try {
-      const response = await axios.put(`${URL}/usuarios/`+ id, admin)
-      console.log(response)
+      let json = await axios.get("http://localhost:3001/admin/");
+      return dispatch({
+        type: GET_ADMIN_PRODUCTS,
+        payload: json.data,
+      });
+    } catch (error) {}
+  };
+}
+
+export function putAdminUser(id) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.put(`http://localhost:3001/usuarios/${id}`);
+      console.log(response);
       return dispatch({
         type: PUT_ADMIN_USER,
-        payload: response.data
-      })
+        payload: response.data,
+      });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 }
