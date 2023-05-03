@@ -1,7 +1,9 @@
+require("dotenv").config();
 const { PROD_ACCESS_TOKEN } = process.env;
 const { Router } = require("express");
 const { getProductsById } = require("../controllers/ProductsController");
 
+const {LINKFRONTDEPLOY} = process.env;
 const Mercadopago = Router();
 const mercadopago = require('mercadopago');
 mercadopago.configure({access_token: PROD_ACCESS_TOKEN,});
@@ -27,9 +29,9 @@ let preference = {
       unit_price: prod.price,
     }] ,
   back_urls:{
-    success: "http://localhost:3000/home",
-    failure: "http://localhost:3000/home",
-    pending: "http://localhost:3000/home",
+    success: `${LINKFRONTDEPLOY}/home`,
+    failure: `${LINKFRONTDEPLOY}/home`,
+    pending: `${LINKFRONTDEPLOY}/home`,
   },/*
   auto_return: "approved",
   binary_mode: true, */
@@ -57,9 +59,9 @@ Mercadopago.post("/create_preference", (req, res) => {
       category_id:"gim",
     })),
 		back_urls: {
-			"success": "http://localhost:3000/home",
-			"failure": "http://localhost:3000/home",
-			"pending": "http://localhost:3000/home"
+      success: `${LINKFRONTDEPLOY}/home`,
+      failure: `${LINKFRONTDEPLOY}/home`,
+      pending: `${LINKFRONTDEPLOY}/home`,
 		},
  		auto_return: "approved",	
 };
